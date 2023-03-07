@@ -9,18 +9,20 @@ import (
 
 // Parse parse Golang standard benchmark output
 //
-//	@param reader LineReader
+//	@param reader *bufio.Reader
+//	@param sep string sep of a Benchmark string's target and scenario
 //	@return []Set Sets of structured benchmark
 //	@return error
 //	@author kevineluo
-//	@update 2023-03-07 12:13:25
-func Parse(reader *bufio.Reader, groupRegexps ...*regexp2.Regexp) ([]Set, error) {
+//	@update 2023-03-07 01:29:47
+func Parse(reader *bufio.Reader, sep string, regex *regexp2.Regexp) ([]Set, error) {
 	sets := make([]Set, 0)
 	for {
-		beginBytes, err := reader.Peek(16)
+		beginBytes, err := reader.Peek(4)
 
-		if string(beginBytes) == "goos" {
-			set, err := ParseSet(reader, groupRegexps...)
+		beginStr := string(beginBytes)
+		if beginStr == "goos" {
+			set, err := ParseSet(reader, sep, regex)
 			if err != nil {
 				return nil, err
 			}

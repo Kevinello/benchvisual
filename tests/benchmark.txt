@@ -1,0 +1,93 @@
+?   	github.com/Kevinello/go-workerpool-benchmark/helper	[no test files]
+goos: linux
+goarch: amd64
+pkg: github.com/Kevinello/go-workerpool-benchmark/randfloat64
+cpu: AMD EPYC 7K62 48-Core Processor
+BenchmarkAllRandFloat64/Pond-Eager/1u-1Mt-16         	       3	 567339057 ns/op	 8055525 B/op	     488 allocs/op
+BenchmarkAllRandFloat64/Pond-Balanced/1u-1Mt-16      	       3	 483694657 ns/op	 8040560 B/op	     333 allocs/op
+BenchmarkAllRandFloat64/Pond-Lazy/1u-1Mt-16          	       3	 524304551 ns/op	 8033186 B/op	     328 allocs/op
+BenchmarkAllRandFloat64/Goroutines/1u-1Mt-16         	       3	 506902543 ns/op	16778000 B/op	 1007494 allocs/op
+BenchmarkAllRandFloat64/GoroutinePool/1u-1Mt-16      	       3	 830652018 ns/op	11208842 B/op	  266368 allocs/op
+BenchmarkAllRandFloat64/BufferedPool/1u-1Mt-16       	       3	 821727645 ns/op	19168426 B/op	  266288 allocs/op
+BenchmarkAllRandFloat64/Gammazero/1u-1Mt-16          	       3	 660288798 ns/op	    1098 B/op	      23 allocs/op
+BenchmarkAllRandFloat64/AntsPool/1u-1Mt-16           	       3	 717637872 ns/op	  696077 B/op	   11500 allocs/op
+BenchmarkAllRandFloat64/Pond-Eager/100u-10Kt-16      	       3	 559282126 ns/op	 8014050 B/op	     262 allocs/op
+BenchmarkAllRandFloat64/Pond-Balanced/100u-10Kt-16   	       3	 555080596 ns/op	 8010680 B/op	     177 allocs/op
+BenchmarkAllRandFloat64/Pond-Lazy/100u-10Kt-16       	       3	 547418125 ns/op	 8009474 B/op	     156 allocs/op
+BenchmarkAllRandFloat64/Goroutines/100u-10Kt-16      	       3	 459970180 ns/op	16492168 B/op	 1005195 allocs/op
+BenchmarkAllRandFloat64/GoroutinePool/100u-10Kt-16   	       3	1076831346 ns/op	11171104 B/op	  266393 allocs/op
+BenchmarkAllRandFloat64/BufferedPool/100u-10Kt-16    	       3	1133863503 ns/op	19163392 B/op	  266319 allocs/op
+BenchmarkAllRandFloat64/Gammazero/100u-10Kt-16       	       3	 910927842 ns/op	    8272 B/op	     230 allocs/op
+BenchmarkAllRandFloat64/AntsPool/100u-10Kt-16        	       3	 725771834 ns/op	  730973 B/op	   11976 allocs/op
+BenchmarkAllRandFloat64/Pond-Eager/1Ku-1Kt-16        	       3	 624877104 ns/op	 8045368 B/op	    1195 allocs/op
+BenchmarkAllRandFloat64/Pond-Balanced/1Ku-1Kt-16     	       3	 604335792 ns/op	 8043400 B/op	    1114 allocs/op
+BenchmarkAllRandFloat64/Pond-Lazy/1Ku-1Kt-16         	       3	 610871000 ns/op	 8045762 B/op	    1137 allocs/op
+BenchmarkAllRandFloat64/Goroutines/1Ku-1Kt-16        	       3	 462183522 ns/op	16032040 B/op	 1001002 allocs/op
+BenchmarkAllRandFloat64/GoroutinePool/1Ku-1Kt-16     	       3	1099862008 ns/op	11218144 B/op	  267526 allocs/op
+BenchmarkAllRandFloat64/BufferedPool/1Ku-1Kt-16      	       3	 776452782 ns/op	19198624 B/op	  267286 allocs/op
+BenchmarkAllRandFloat64/Gammazero/1Ku-1Kt-16         	       3	 964024467 ns/op	   91408 B/op	    2107 allocs/op
+BenchmarkAllRandFloat64/AntsPool/1Ku-1Kt-16          	       3	 749207430 ns/op	 1490018 B/op	   25769 allocs/op
+BenchmarkAllRandFloat64/Pond-Eager/10Ku-100t-16      	       3	 662830528 ns/op	 8362168 B/op	   10499 allocs/op
+BenchmarkAllRandFloat64/Pond-Balanced/10Ku-100t-16   	       3	 644694244 ns/op	 8348413 B/op	   10286 allocs/op
+BenchmarkAllRandFloat64/Pond-Lazy/10Ku-100t-16       	       3	 590724790 ns/op	 8356221 B/op	   10359 allocs/op
+BenchmarkAllRandFloat64/Goroutines/10Ku-100t-16      	       3	 420115074 ns/op	16333640 B/op	 1010143 allocs/op
+BenchmarkAllRandFloat64/GoroutinePool/10Ku-100t-16   	       3	1080941237 ns/op	11562624 B/op	  277114 allocs/op
+BenchmarkAllRandFloat64/BufferedPool/10Ku-100t-16    	       3	1092396896 ns/op	19482560 B/op	  276244 allocs/op
+BenchmarkAllRandFloat64/Gammazero/10Ku-100t-16       	       3	1059889957 ns/op	  643536 B/op	   13697 allocs/op
+BenchmarkAllRandFloat64/AntsPool/10Ku-100t-16        	       3	 890926417 ns/op	40335952 B/op	  654796 allocs/op
+BenchmarkAllRandFloat64/Pond-Eager/1Mu-1t-16         	       3	 718834324 ns/op	40018109 B/op	 1000192 allocs/op
+BenchmarkAllRandFloat64/Pond-Balanced/1Mu-1t-16      	       3	 688294015 ns/op	40007016 B/op	 1000078 allocs/op
+BenchmarkAllRandFloat64/Pond-Lazy/1Mu-1t-16          	       3	 671526024 ns/op	40007538 B/op	 1000066 allocs/op
+BenchmarkAllRandFloat64/Goroutines/1Mu-1t-16         	       3	 485842902 ns/op	48010792 B/op	 2000114 allocs/op
+BenchmarkAllRandFloat64/GoroutinePool/1Mu-1t-16      	       3	1081714633 ns/op	43160544 B/op	 1266259 allocs/op
+BenchmarkAllRandFloat64/BufferedPool/1Mu-1t-16       	       3	1148615814 ns/op	51164064 B/op	 1266260 allocs/op
+BenchmarkAllRandFloat64/Gammazero/1Mu-1t-16          	       3	1454526384 ns/op	87800176 B/op	 1354645 allocs/op
+BenchmarkAllRandFloat64/AntsPool/1Mu-1t-16           	       3	 770323038 ns/op	32460136 B/op	 1007566 allocs/op
+PASS
+ok  	github.com/Kevinello/go-workerpool-benchmark/randfloat64	125.218s
+goos: linux
+goarch: amd64
+pkg: github.com/Kevinello/go-workerpool-benchmark/sleep
+cpu: AMD EPYC 7K62 48-Core Processor
+BenchmarkAllSleep10ms/Pond-Eager/1u-1Mt-16         	       3	 679535295 ns/op	15276685 B/op	   90517 allocs/op
+BenchmarkAllSleep10ms/Pond-Balanced/1u-1Mt-16      	       3	1253212444 ns/op	13642413 B/op	   85106 allocs/op
+BenchmarkAllSleep10ms/Pond-Lazy/1u-1Mt-16          	       3	1455035252 ns/op	14426146 B/op	   91721 allocs/op
+BenchmarkAllSleep10ms/Goroutines/1u-1Mt-16         	       3	 516637533 ns/op	96464477 B/op	 2004273 allocs/op
+BenchmarkAllSleep10ms/GoroutinePool/1u-1Mt-16      	       3	1028226648 ns/op	28114037 B/op	  475582 allocs/op
+BenchmarkAllSleep10ms/BufferedPool/1u-1Mt-16       	       3	1018759492 ns/op	41994261 B/op	  533461 allocs/op
+BenchmarkAllSleep10ms/Gammazero/1u-1Mt-16          	       3	1271484680 ns/op	 1465978 B/op	   23942 allocs/op
+BenchmarkAllSleep10ms/AntsPool/1u-1Mt-16           	       3	 860719918 ns/op	 5724016 B/op	   89287 allocs/op
+BenchmarkAllSleep10ms/Pond-Eager/100u-10Kt-16      	       3	 750843662 ns/op	13117464 B/op	   83684 allocs/op
+BenchmarkAllSleep10ms/Pond-Balanced/100u-10Kt-16   	       3	2157206090 ns/op	 9128610 B/op	   18667 allocs/op
+BenchmarkAllSleep10ms/Pond-Lazy/100u-10Kt-16       	       3	2645551867 ns/op	 8892290 B/op	   14845 allocs/op
+BenchmarkAllSleep10ms/Goroutines/100u-10Kt-16      	       3	 627400648 ns/op	106183261 B/op	 2023451 allocs/op
+BenchmarkAllSleep10ms/GoroutinePool/100u-10Kt-16   	       3	1211959484 ns/op	27209898 B/op	  466386 allocs/op
+BenchmarkAllSleep10ms/BufferedPool/100u-10Kt-16    	       3	1208956198 ns/op	35217792 B/op	  466375 allocs/op
+BenchmarkAllSleep10ms/Gammazero/100u-10Kt-16       	       3	1187474936 ns/op	 1534346 B/op	   25016 allocs/op
+BenchmarkAllSleep10ms/AntsPool/100u-10Kt-16        	       3	 831347253 ns/op	14011562 B/op	  218100 allocs/op
+BenchmarkAllSleep10ms/Pond-Eager/1Ku-1Kt-16        	       3	 903500836 ns/op	13046872 B/op	   83177 allocs/op
+BenchmarkAllSleep10ms/Pond-Balanced/1Ku-1Kt-16     	       3	1666427707 ns/op	 9505240 B/op	   25249 allocs/op
+BenchmarkAllSleep10ms/Pond-Lazy/1Ku-1Kt-16         	       3	2134730987 ns/op	 9162157 B/op	   19698 allocs/op
+BenchmarkAllSleep10ms/Goroutines/1Ku-1Kt-16        	       3	 565302387 ns/op	96034344 B/op	 2001026 allocs/op
+BenchmarkAllSleep10ms/GoroutinePool/1Ku-1Kt-16     	       3	1286297114 ns/op	27199712 B/op	  467334 allocs/op
+BenchmarkAllSleep10ms/BufferedPool/1Ku-1Kt-16      	       3	1214802844 ns/op	35219210 B/op	  467302 allocs/op
+BenchmarkAllSleep10ms/Gammazero/1Ku-1Kt-16         	       3	1226587080 ns/op	 1553040 B/op	   25703 allocs/op
+BenchmarkAllSleep10ms/AntsPool/1Ku-1Kt-16          	       3	 942052862 ns/op	26672685 B/op	  399077 allocs/op
+BenchmarkAllSleep10ms/Pond-Eager/10Ku-100t-16      	       3	1248812919 ns/op	13429912 B/op	   93192 allocs/op
+BenchmarkAllSleep10ms/Pond-Balanced/10Ku-100t-16   	       3	1356423820 ns/op	10256248 B/op	   41563 allocs/op
+BenchmarkAllSleep10ms/Pond-Lazy/10Ku-100t-16       	       3	1746865628 ns/op	 9716301 B/op	   33041 allocs/op
+BenchmarkAllSleep10ms/Goroutines/10Ku-100t-16      	       3	 500758322 ns/op	96320040 B/op	 2010002 allocs/op
+BenchmarkAllSleep10ms/GoroutinePool/10Ku-100t-16   	       3	1229181137 ns/op	27484224 B/op	  476298 allocs/op
+BenchmarkAllSleep10ms/BufferedPool/10Ku-100t-16    	       3	1226214550 ns/op	35484768 B/op	  476267 allocs/op
+BenchmarkAllSleep10ms/Gammazero/10Ku-100t-16       	       3	1282815534 ns/op	 1892581 B/op	   35029 allocs/op
+BenchmarkAllSleep10ms/AntsPool/10Ku-100t-16        	       3	 965795469 ns/op	13521554 B/op	  214609 allocs/op
+BenchmarkAllSleep10ms/Pond-Eager/1Mu-1t-16         	       3	3727648714 ns/op	43333026 B/op	 1054493 allocs/op
+BenchmarkAllSleep10ms/Pond-Balanced/1Mu-1t-16      	       3	1165344577 ns/op	42335682 B/op	 1037935 allocs/op
+BenchmarkAllSleep10ms/Pond-Lazy/1Mu-1t-16          	       3	1384323616 ns/op	41912013 B/op	 1031305 allocs/op
+BenchmarkAllSleep10ms/Goroutines/1Mu-1t-16         	       3	 552007710 ns/op	128000040 B/op	 3000002 allocs/op
+BenchmarkAllSleep10ms/GoroutinePool/1Mu-1t-16      	       3	1290980638 ns/op	59163520 B/op	 1466290 allocs/op
+BenchmarkAllSleep10ms/BufferedPool/1Mu-1t-16       	       3	1251145436 ns/op	67163456 B/op	 1466253 allocs/op
+BenchmarkAllSleep10ms/Gammazero/1Mu-1t-16          	       3	1593707654 ns/op	88332933 B/op	 1384304 allocs/op
+BenchmarkAllSleep10ms/AntsPool/1Mu-1t-16           	       3	1227850274 ns/op	88529530 B/op	 1834343 allocs/op
+PASS
+ok  	github.com/Kevinello/go-workerpool-benchmark/sleep	206.165s

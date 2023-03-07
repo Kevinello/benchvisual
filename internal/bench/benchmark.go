@@ -9,15 +9,17 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/Kevinello/go-benchvisual/internal/collections"
 	"github.com/dlclark/regexp2"
 )
 
 // Set is a set of benchmark runs
 type Set struct {
-	Goos   string
-	Goarch string
-	Pkg    string
-	Groups map[string][]Benchmark `json:"groups,omitempty"` // map[regexp][]Benchmark; group of Benchmark result(for visualizing result in group)
+	Goos    string                   `json:"goos,omitempty"`
+	Goarch  string                   `json:"goarch,omitempty"`
+	Pkg     string                   `json:"pkg,omitempty"`
+	CPU     string                   `json:"cpu,omitempty"`
+	Targets map[string]BenchmarkList `json:"targets,omitempty"` // map[target][]Benchmark; group of Benchmark result(Series in visualized result)
 }
 
 // Benchmark is an individual run. Note that all metrics in here must be represented as
@@ -28,16 +30,39 @@ type Benchmark struct {
 	Name string `json:"name,omitempty"`
 	Runs int    `json:"runs,omitempty"` // benchmark times
 
+	// For a Benchmark function BenchXXX10000, its target is XXX, and its Scenario is 10000
+	// The Benchmark of different target is compared in each Scenario
+	Scenario string `json:"scenario,omitempty"`
+	Target   string `json:"target,omitempty"`
+
 	NsPerOp       float64            `json:"ns_per_op,omitempty"`
-	Mem           Mem                `json:"mem,omitempty"` // metrics from '-benchmem'
-	CustomMetrics map[string]float64 `json:",omitempty"`    // https://tip.golang.org/pkg/testing/#B.ReportMetric
+	Mem           Mem                `json:"mem,omitempty"`            // metrics from '-benchmem'
+	CustomMetrics map[string]float64 `json:"custom_metrics,omitempty"` // custom metrics(https://tip.golang.org/pkg/testing/#B.ReportMetric)
+}
+
+// BenchmarkList implement sort.Interface
+//
+//	@author kevineluo
+//	@update 2023-03-07 03:21:11
+type BenchmarkList []Benchmark
+
+func (b BenchmarkList) Len() int {
+	return len(b)
+}
+
+func (b BenchmarkList) Less(i, j int) bool {
+	return b[i].Scenario < b[j].Scenario
+}
+
+func (b BenchmarkList) Swap(i, j int) {
+	b[i], b[j] = b[j], b[i]
 }
 
 // Mem is memory allocation information about a run
 type Mem struct {
-	BytesPerOp  float64
-	AllocsPerOp float64
-	MBPerSec    float64
+	BytesPerOp  float64 `json:"bytes_per_op,omitempty"`
+	AllocsPerOp float64 `json:"allocs_per_op,omitempty"`
+	MBPerSec    float64 `json:"mb_per_sec,omitempty"`
 }
 
 // ParseSet Parse one set of benchmark output
@@ -49,9 +74,9 @@ type Mem struct {
 //	@return err error
 //	@author kevineluo
 //	@update 2023-03-07 12:16:30
-func ParseSet(reader *bufio.Reader, groupRegexps ...*regexp2.Regexp) (set *Set, err error) {
+func ParseSet(reader *bufio.Reader, sep string, regex *regexp2.Regexp) (set *Set, err error) {
 	set = &Set{
-		Groups: make(map[string][]Benchmark),
+		Targets: make(map[string]BenchmarkList),
 	}
 
 	for {
@@ -70,27 +95,37 @@ func ParseSet(reader *bufio.Reader, groupRegexps ...*regexp2.Regexp) (set *Set, 
 			set.Goarch = arch
 		} else if pkg, found := strings.CutPrefix(line, "pkg: "); found {
 			set.Pkg = pkg
-		} else if strings.HasPrefix(line, "Benchmark") {
-			bench, err := ParseBench(line)
+		} else if cpu, found := strings.CutPrefix(line, "cpu: "); found {
+			set.CPU = cpu
+		} else if strings.HasPrefix(line, "Bench") {
+			bench, err := ParseBench(line, sep, regex)
 			if err != nil {
 				return nil, fmt.Errorf("%w: %q", err, line)
 			}
-			// default group
-			group := "others"
-			for _, groupRegexp := range groupRegexps {
-				if match, _ := groupRegexp.MatchString(bench.Name); match {
-					group = groupRegexp.String()
-					break
-				}
-			}
-			if benchmarks, ok := set.Groups[group]; ok {
-				set.Groups[group] = append(benchmarks, *bench)
+			if benchmarks, ok := set.Targets[bench.Target]; ok {
+				set.Targets[bench.Target] = append(benchmarks, *bench)
 			} else {
-				set.Groups[group] = []Benchmark{*bench}
+				set.Targets[bench.Target] = []Benchmark{*bench}
 			}
 		}
 	}
 
+	return
+}
+
+// GetScenario get all unique scenario in a Benchmark set
+//
+//	@receiver set *Set
+//	@return scenarios []string
+//	@author kevineluo
+//	@update 2023-03-07 04:33:12
+func (set *Set) GetScenario() (scenarios []string) {
+	scenarioSet := collections.NewSet[string](0)
+	for _, benchmarks := range set.Targets {
+		// collect unique scenario
+		scenarioSet = scenarioSet.Union(collections.SliceToSet(collections.Map(benchmarks, func(benchmark Benchmark) (scenario string) { return benchmark.Scenario })))
+	}
+	scenarios = scenarioSet.ToSlice()
 	return
 }
 
@@ -104,16 +139,52 @@ func ParseSet(reader *bufio.Reader, groupRegexps ...*regexp2.Regexp) (set *Set, 
 //	@return err error
 //	@author kevineluo
 //	@update 2023-03-07 12:11:18
-func ParseBench(line string) (bench *Benchmark, err error) {
+func ParseBench(line string, sep string, regex *regexp2.Regexp) (bench *Benchmark, err error) {
 	bench = new(Benchmark)
 	// split out name
-	split := strings.Split(line, "\t")
+	split := collections.Map(strings.Split(line, "\t"), func(s string) string {
+		return strings.TrimSpace(s)
+	})
 	bench.Name, split = popLeft(split)
 
-	// runs - doesn't include units
+	if regex != nil {
+		// with regexp
+		match, err := regex.FindStringMatch(bench.Name)
+		if err != nil {
+			return nil, fmt.Errorf("[ParseBench] error when parse [benchmark name: %s], [regexp: %s], error: %w", bench.Name, regex.String(), err)
+		}
+		if group := match.GroupByName("target"); group != nil {
+			bench.Target = group.String()
+		} else {
+			return nil, fmt.Errorf("[ParseBench] group 'target' not found in match result")
+		}
+		if group := match.GroupByName("scenario"); group != nil {
+			bench.Scenario = group.String()
+		} else {
+			return nil, fmt.Errorf("[ParseBench] group 'scenario' not found in match result")
+		}
+	} else if sep != "" {
+		// with separator
+		var after string
+		var found bool
+		// Compatible for "Benchmark" and "Bench"
+		if after, found = strings.CutPrefix(bench.Name, "Benchmark"); !found {
+			if after, found = strings.CutPrefix(bench.Name, "Bench"); !found {
+				return nil, fmt.Errorf("[ParseBench] illegal Benchmark name: %s", bench.Name)
+			}
+		}
+		bench.Target, bench.Scenario, found = strings.Cut(after, sep)
+		if !found {
+			return nil, fmt.Errorf("[ParseBench] given separator[%s] not found in Benchmark name: %s", sep, bench.Name)
+		}
+	} else {
+		return nil, fmt.Errorf("neither given regexp expression(-regex) nor given separator(--sep)")
+	}
+
+	// parse runs (doesn't include units)
 	tmp, split := popLeft(split)
 	if bench.Runs, err = strconv.Atoi(tmp); err != nil {
-		return nil, fmt.Errorf("%s: could not parse run: %w (line: %s)", bench.Name, err, line)
+		return nil, fmt.Errorf("[ParseBench] %s: could not parse run: %w (line: %s)", bench.Name, err, line)
 	}
 
 	// parse metrics with units
@@ -121,7 +192,7 @@ func ParseBench(line string) (bench *Benchmark, err error) {
 		tmp, split = popLeft(split)
 		valueAndUnits := strings.Split(tmp, " ")
 		if len(valueAndUnits) < 2 {
-			return nil, fmt.Errorf("expected two parts in value '%s', got %d", tmp, len(valueAndUnits))
+			return nil, fmt.Errorf("[ParseBench] expected two parts in value '%s', got %d", tmp, len(valueAndUnits))
 		}
 
 		var value, units = valueAndUnits[0], valueAndUnits[1]
@@ -141,7 +212,7 @@ func ParseBench(line string) (bench *Benchmark, err error) {
 			bench.CustomMetrics[units], err = strconv.ParseFloat(value, 64)
 		}
 		if err != nil {
-			return nil, fmt.Errorf("%s: could not parse %s: %v", bench.Name, units, err)
+			return nil, fmt.Errorf("[ParseBench] %s: could not parse %s: %v", bench.Name, units, err)
 		}
 	}
 
