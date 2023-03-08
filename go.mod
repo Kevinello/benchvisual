@@ -2,6 +2,11 @@ module github.com/Kevinello/benchvisual
 
 go 1.20
 
+retract (
+    v0.1.0
+    v0.1.1
+)
+
 require (
 	github.com/charmbracelet/log v0.1.2
 	github.com/dlclark/regexp2 v1.8.1

@@ -21,6 +21,13 @@ benchvisual is a tool for visualizing Golang standard Benchmark output, which wi
 go install github.com/Kevinello/benchvisual@latest
 ```
 
+### ⚠️ Retracted versions
+
+Versions released **erroneously**, Please do not install these versions([reason](https://stackoverflow.com/questions/68599703/how-do-i-delete-a-package-that-i-accidentally-published-to-go-dev/68599844#68599844))
+
+- v0.1.0
+- v0.1.1
+
 ## Usage
 
 ```shell
