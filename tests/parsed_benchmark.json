@@ -5,448 +5,462 @@
         "pkg": "github.com/Kevinello/go-workerpool-benchmark/randfloat64",
         "cpu": "AMD EPYC 7K62 48-Core Processor",
         "targets": {
-            "AllRandFloat64": [
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Eager/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/1u-1Mt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 567339057,
-                    "mem": {
-                        "bytes_per_op": 8055525,
-                        "allocs_per_op": 488
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Balanced/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/1u-1Mt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 483694657,
-                    "mem": {
-                        "bytes_per_op": 8040560,
-                        "allocs_per_op": 333
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Lazy/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/1u-1Mt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 524304551,
-                    "mem": {
-                        "bytes_per_op": 8033186,
-                        "allocs_per_op": 328
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Goroutines/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/1u-1Mt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 506902543,
-                    "mem": {
-                        "bytes_per_op": 16778000,
-                        "allocs_per_op": 1007494
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/GoroutinePool/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/1u-1Mt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 830652018,
-                    "mem": {
-                        "bytes_per_op": 11208842,
-                        "allocs_per_op": 266368
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/BufferedPool/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/1u-1Mt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 821727645,
-                    "mem": {
-                        "bytes_per_op": 19168426,
-                        "allocs_per_op": 266288
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Gammazero/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/1u-1Mt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 660288798,
-                    "mem": {
-                        "bytes_per_op": 1098,
-                        "allocs_per_op": 23
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/AntsPool/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/1u-1Mt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 717637872,
-                    "mem": {
-                        "bytes_per_op": 696077,
-                        "allocs_per_op": 11500
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Eager/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/100u-10Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 559282126,
-                    "mem": {
-                        "bytes_per_op": 8014050,
-                        "allocs_per_op": 262
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Balanced/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/100u-10Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 555080596,
-                    "mem": {
-                        "bytes_per_op": 8010680,
-                        "allocs_per_op": 177
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Lazy/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/100u-10Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 547418125,
-                    "mem": {
-                        "bytes_per_op": 8009474,
-                        "allocs_per_op": 156
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Goroutines/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/100u-10Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 459970180,
-                    "mem": {
-                        "bytes_per_op": 16492168,
-                        "allocs_per_op": 1005195
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/GoroutinePool/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/100u-10Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 1076831346,
-                    "mem": {
-                        "bytes_per_op": 11171104,
-                        "allocs_per_op": 266393
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/BufferedPool/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/100u-10Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 1133863503,
-                    "mem": {
-                        "bytes_per_op": 19163392,
-                        "allocs_per_op": 266319
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Gammazero/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/100u-10Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 910927842,
-                    "mem": {
-                        "bytes_per_op": 8272,
-                        "allocs_per_op": 230
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/AntsPool/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/100u-10Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 725771834,
-                    "mem": {
-                        "bytes_per_op": 730973,
-                        "allocs_per_op": 11976
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Eager/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/1Ku-1Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 624877104,
-                    "mem": {
-                        "bytes_per_op": 8045368,
-                        "allocs_per_op": 1195
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Balanced/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/1Ku-1Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 604335792,
-                    "mem": {
-                        "bytes_per_op": 8043400,
-                        "allocs_per_op": 1114
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Lazy/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/1Ku-1Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 610871000,
-                    "mem": {
-                        "bytes_per_op": 8045762,
-                        "allocs_per_op": 1137
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Goroutines/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/1Ku-1Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 462183522,
-                    "mem": {
-                        "bytes_per_op": 16032040,
-                        "allocs_per_op": 1001002
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/GoroutinePool/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/1Ku-1Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 1099862008,
-                    "mem": {
-                        "bytes_per_op": 11218144,
-                        "allocs_per_op": 267526
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/BufferedPool/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/1Ku-1Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 776452782,
-                    "mem": {
-                        "bytes_per_op": 19198624,
-                        "allocs_per_op": 267286
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Gammazero/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/1Ku-1Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 964024467,
-                    "mem": {
-                        "bytes_per_op": 91408,
-                        "allocs_per_op": 2107
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/AntsPool/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/1Ku-1Kt-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 749207430,
-                    "mem": {
-                        "bytes_per_op": 1490018,
-                        "allocs_per_op": 25769
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Eager/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/10Ku-100t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 662830528,
-                    "mem": {
-                        "bytes_per_op": 8362168,
-                        "allocs_per_op": 10499
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Balanced/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/10Ku-100t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 644694244,
-                    "mem": {
-                        "bytes_per_op": 8348413,
-                        "allocs_per_op": 10286
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Lazy/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/10Ku-100t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 590724790,
-                    "mem": {
-                        "bytes_per_op": 8356221,
-                        "allocs_per_op": 10359
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Goroutines/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/10Ku-100t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 420115074,
-                    "mem": {
-                        "bytes_per_op": 16333640,
-                        "allocs_per_op": 1010143
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/GoroutinePool/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/10Ku-100t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 1080941237,
-                    "mem": {
-                        "bytes_per_op": 11562624,
-                        "allocs_per_op": 277114
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/BufferedPool/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/10Ku-100t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 1092396896,
-                    "mem": {
-                        "bytes_per_op": 19482560,
-                        "allocs_per_op": 276244
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Gammazero/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/10Ku-100t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 1059889957,
-                    "mem": {
-                        "bytes_per_op": 643536,
-                        "allocs_per_op": 13697
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/AntsPool/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/10Ku-100t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 890926417,
-                    "mem": {
-                        "bytes_per_op": 40335952,
-                        "allocs_per_op": 654796
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Eager/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/1Mu-1t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 718834324,
-                    "mem": {
-                        "bytes_per_op": 40018109,
-                        "allocs_per_op": 1000192
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Balanced/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/1Mu-1t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 688294015,
-                    "mem": {
-                        "bytes_per_op": 40007016,
-                        "allocs_per_op": 1000078
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Pond-Lazy/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/1Mu-1t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 671526024,
-                    "mem": {
-                        "bytes_per_op": 40007538,
-                        "allocs_per_op": 1000066
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Goroutines/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/1Mu-1t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 485842902,
-                    "mem": {
-                        "bytes_per_op": 48010792,
-                        "allocs_per_op": 2000114
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/GoroutinePool/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/1Mu-1t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 1081714633,
-                    "mem": {
-                        "bytes_per_op": 43160544,
-                        "allocs_per_op": 1266259
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/BufferedPool/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/1Mu-1t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 1148615814,
-                    "mem": {
-                        "bytes_per_op": 51164064,
-                        "allocs_per_op": 1266260
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/Gammazero/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/1Mu-1t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 1454526384,
-                    "mem": {
-                        "bytes_per_op": 87800176,
-                        "allocs_per_op": 1354645
-                    }
-                },
-                {
-                    "name": "BenchmarkAllRandFloat64/AntsPool/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/1Mu-1t-16",
-                    "target": "AllRandFloat64",
-                    "ns_per_op": 770323038,
-                    "mem": {
-                        "bytes_per_op": 32460136,
-                        "allocs_per_op": 1007566
-                    }
-                }
-            ]
+            "RandFloat64/AntsPool": [
+    {
+        "name": "BenchmarkAllRandFloat64/AntsPool/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "RandFloat64/AntsPool",
+        "ns_per_op": 717637872,
+        "mem": {
+            "bytes_per_op": 696077,
+            "allocs_per_op": 11500
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/AntsPool/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "RandFloat64/AntsPool",
+        "ns_per_op": 725771834,
+        "mem": {
+            "bytes_per_op": 730973,
+            "allocs_per_op": 11976
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/AntsPool/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "RandFloat64/AntsPool",
+        "ns_per_op": 749207430,
+        "mem": {
+            "bytes_per_op": 1490018,
+            "allocs_per_op": 25769
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/AntsPool/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "RandFloat64/AntsPool",
+        "ns_per_op": 890926417,
+        "mem": {
+            "bytes_per_op": 40335952,
+            "allocs_per_op": 654796
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/AntsPool/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "RandFloat64/AntsPool",
+        "ns_per_op": 770323038,
+        "mem": {
+            "bytes_per_op": 32460136,
+            "allocs_per_op": 1007566
+        }
+    }
+],
+            "RandFloat64/BufferedPool": [
+    {
+        "name": "BenchmarkAllRandFloat64/BufferedPool/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "RandFloat64/BufferedPool",
+        "ns_per_op": 821727645,
+        "mem": {
+            "bytes_per_op": 19168426,
+            "allocs_per_op": 266288
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/BufferedPool/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "RandFloat64/BufferedPool",
+        "ns_per_op": 1133863503,
+        "mem": {
+            "bytes_per_op": 19163392,
+            "allocs_per_op": 266319
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/BufferedPool/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "RandFloat64/BufferedPool",
+        "ns_per_op": 776452782,
+        "mem": {
+            "bytes_per_op": 19198624,
+            "allocs_per_op": 267286
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/BufferedPool/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "RandFloat64/BufferedPool",
+        "ns_per_op": 1092396896,
+        "mem": {
+            "bytes_per_op": 19482560,
+            "allocs_per_op": 276244
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/BufferedPool/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "RandFloat64/BufferedPool",
+        "ns_per_op": 1148615814,
+        "mem": {
+            "bytes_per_op": 51164064,
+            "allocs_per_op": 1266260
+        }
+    }
+],
+            "RandFloat64/Gammazero": [
+    {
+        "name": "BenchmarkAllRandFloat64/Gammazero/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "RandFloat64/Gammazero",
+        "ns_per_op": 660288798,
+        "mem": {
+            "bytes_per_op": 1098,
+            "allocs_per_op": 23
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Gammazero/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "RandFloat64/Gammazero",
+        "ns_per_op": 910927842,
+        "mem": {
+            "bytes_per_op": 8272,
+            "allocs_per_op": 230
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Gammazero/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "RandFloat64/Gammazero",
+        "ns_per_op": 964024467,
+        "mem": {
+            "bytes_per_op": 91408,
+            "allocs_per_op": 2107
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Gammazero/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "RandFloat64/Gammazero",
+        "ns_per_op": 1059889957,
+        "mem": {
+            "bytes_per_op": 643536,
+            "allocs_per_op": 13697
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Gammazero/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "RandFloat64/Gammazero",
+        "ns_per_op": 1454526384,
+        "mem": {
+            "bytes_per_op": 87800176,
+            "allocs_per_op": 1354645
+        }
+    }
+],
+            "RandFloat64/GoroutinePool": [
+    {
+        "name": "BenchmarkAllRandFloat64/GoroutinePool/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "RandFloat64/GoroutinePool",
+        "ns_per_op": 830652018,
+        "mem": {
+            "bytes_per_op": 11208842,
+            "allocs_per_op": 266368
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/GoroutinePool/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "RandFloat64/GoroutinePool",
+        "ns_per_op": 1076831346,
+        "mem": {
+            "bytes_per_op": 11171104,
+            "allocs_per_op": 266393
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/GoroutinePool/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "RandFloat64/GoroutinePool",
+        "ns_per_op": 1099862008,
+        "mem": {
+            "bytes_per_op": 11218144,
+            "allocs_per_op": 267526
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/GoroutinePool/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "RandFloat64/GoroutinePool",
+        "ns_per_op": 1080941237,
+        "mem": {
+            "bytes_per_op": 11562624,
+            "allocs_per_op": 277114
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/GoroutinePool/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "RandFloat64/GoroutinePool",
+        "ns_per_op": 1081714633,
+        "mem": {
+            "bytes_per_op": 43160544,
+            "allocs_per_op": 1266259
+        }
+    }
+],
+            "RandFloat64/Goroutines": [
+    {
+        "name": "BenchmarkAllRandFloat64/Goroutines/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "RandFloat64/Goroutines",
+        "ns_per_op": 506902543,
+        "mem": {
+            "bytes_per_op": 16778000,
+            "allocs_per_op": 1007494
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Goroutines/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "RandFloat64/Goroutines",
+        "ns_per_op": 459970180,
+        "mem": {
+            "bytes_per_op": 16492168,
+            "allocs_per_op": 1005195
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Goroutines/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "RandFloat64/Goroutines",
+        "ns_per_op": 462183522,
+        "mem": {
+            "bytes_per_op": 16032040,
+            "allocs_per_op": 1001002
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Goroutines/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "RandFloat64/Goroutines",
+        "ns_per_op": 420115074,
+        "mem": {
+            "bytes_per_op": 16333640,
+            "allocs_per_op": 1010143
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Goroutines/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "RandFloat64/Goroutines",
+        "ns_per_op": 485842902,
+        "mem": {
+            "bytes_per_op": 48010792,
+            "allocs_per_op": 2000114
+        }
+    }
+],
+            "RandFloat64/Pond-Balanced": [
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Balanced/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "RandFloat64/Pond-Balanced",
+        "ns_per_op": 483694657,
+        "mem": {
+            "bytes_per_op": 8040560,
+            "allocs_per_op": 333
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Balanced/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "RandFloat64/Pond-Balanced",
+        "ns_per_op": 555080596,
+        "mem": {
+            "bytes_per_op": 8010680,
+            "allocs_per_op": 177
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Balanced/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "RandFloat64/Pond-Balanced",
+        "ns_per_op": 604335792,
+        "mem": {
+            "bytes_per_op": 8043400,
+            "allocs_per_op": 1114
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Balanced/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "RandFloat64/Pond-Balanced",
+        "ns_per_op": 644694244,
+        "mem": {
+            "bytes_per_op": 8348413,
+            "allocs_per_op": 10286
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Balanced/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "RandFloat64/Pond-Balanced",
+        "ns_per_op": 688294015,
+        "mem": {
+            "bytes_per_op": 40007016,
+            "allocs_per_op": 1000078
+        }
+    }
+],
+            "RandFloat64/Pond-Eager": [
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Eager/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "RandFloat64/Pond-Eager",
+        "ns_per_op": 567339057,
+        "mem": {
+            "bytes_per_op": 8055525,
+            "allocs_per_op": 488
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Eager/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "RandFloat64/Pond-Eager",
+        "ns_per_op": 559282126,
+        "mem": {
+            "bytes_per_op": 8014050,
+            "allocs_per_op": 262
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Eager/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "RandFloat64/Pond-Eager",
+        "ns_per_op": 624877104,
+        "mem": {
+            "bytes_per_op": 8045368,
+            "allocs_per_op": 1195
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Eager/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "RandFloat64/Pond-Eager",
+        "ns_per_op": 662830528,
+        "mem": {
+            "bytes_per_op": 8362168,
+            "allocs_per_op": 10499
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Eager/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "RandFloat64/Pond-Eager",
+        "ns_per_op": 718834324,
+        "mem": {
+            "bytes_per_op": 40018109,
+            "allocs_per_op": 1000192
+        }
+    }
+],
+            "RandFloat64/Pond-Lazy": [
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Lazy/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "RandFloat64/Pond-Lazy",
+        "ns_per_op": 524304551,
+        "mem": {
+            "bytes_per_op": 8033186,
+            "allocs_per_op": 328
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Lazy/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "RandFloat64/Pond-Lazy",
+        "ns_per_op": 547418125,
+        "mem": {
+            "bytes_per_op": 8009474,
+            "allocs_per_op": 156
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Lazy/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "RandFloat64/Pond-Lazy",
+        "ns_per_op": 610871000,
+        "mem": {
+            "bytes_per_op": 8045762,
+            "allocs_per_op": 1137
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Lazy/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "RandFloat64/Pond-Lazy",
+        "ns_per_op": 590724790,
+        "mem": {
+            "bytes_per_op": 8356221,
+            "allocs_per_op": 10359
+        }
+    },
+    {
+        "name": "BenchmarkAllRandFloat64/Pond-Lazy/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "RandFloat64/Pond-Lazy",
+        "ns_per_op": 671526024,
+        "mem": {
+            "bytes_per_op": 40007538,
+            "allocs_per_op": 1000066
+        }
+    }
+]
         }
     },
     {
@@ -455,448 +469,462 @@
         "pkg": "github.com/Kevinello/go-workerpool-benchmark/sleep",
         "cpu": "AMD EPYC 7K62 48-Core Processor",
         "targets": {
-            "AllSleep10ms": [
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Eager/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/1u-1Mt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 679535295,
-                    "mem": {
-                        "bytes_per_op": 15276685,
-                        "allocs_per_op": 90517
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Balanced/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/1u-1Mt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1253212444,
-                    "mem": {
-                        "bytes_per_op": 13642413,
-                        "allocs_per_op": 85106
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Lazy/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/1u-1Mt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1455035252,
-                    "mem": {
-                        "bytes_per_op": 14426146,
-                        "allocs_per_op": 91721
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Goroutines/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/1u-1Mt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 516637533,
-                    "mem": {
-                        "bytes_per_op": 96464477,
-                        "allocs_per_op": 2004273
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/GoroutinePool/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/1u-1Mt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1028226648,
-                    "mem": {
-                        "bytes_per_op": 28114037,
-                        "allocs_per_op": 475582
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/BufferedPool/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/1u-1Mt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1018759492,
-                    "mem": {
-                        "bytes_per_op": 41994261,
-                        "allocs_per_op": 533461
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Gammazero/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/1u-1Mt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1271484680,
-                    "mem": {
-                        "bytes_per_op": 1465978,
-                        "allocs_per_op": 23942
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/AntsPool/1u-1Mt-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/1u-1Mt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 860719918,
-                    "mem": {
-                        "bytes_per_op": 5724016,
-                        "allocs_per_op": 89287
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Eager/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/100u-10Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 750843662,
-                    "mem": {
-                        "bytes_per_op": 13117464,
-                        "allocs_per_op": 83684
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Balanced/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/100u-10Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 2157206090,
-                    "mem": {
-                        "bytes_per_op": 9128610,
-                        "allocs_per_op": 18667
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Lazy/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/100u-10Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 2645551867,
-                    "mem": {
-                        "bytes_per_op": 8892290,
-                        "allocs_per_op": 14845
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Goroutines/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/100u-10Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 627400648,
-                    "mem": {
-                        "bytes_per_op": 106183261,
-                        "allocs_per_op": 2023451
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/GoroutinePool/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/100u-10Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1211959484,
-                    "mem": {
-                        "bytes_per_op": 27209898,
-                        "allocs_per_op": 466386
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/BufferedPool/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/100u-10Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1208956198,
-                    "mem": {
-                        "bytes_per_op": 35217792,
-                        "allocs_per_op": 466375
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Gammazero/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/100u-10Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1187474936,
-                    "mem": {
-                        "bytes_per_op": 1534346,
-                        "allocs_per_op": 25016
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/AntsPool/100u-10Kt-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/100u-10Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 831347253,
-                    "mem": {
-                        "bytes_per_op": 14011562,
-                        "allocs_per_op": 218100
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Eager/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/1Ku-1Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 903500836,
-                    "mem": {
-                        "bytes_per_op": 13046872,
-                        "allocs_per_op": 83177
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Balanced/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/1Ku-1Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1666427707,
-                    "mem": {
-                        "bytes_per_op": 9505240,
-                        "allocs_per_op": 25249
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Lazy/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/1Ku-1Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 2134730987,
-                    "mem": {
-                        "bytes_per_op": 9162157,
-                        "allocs_per_op": 19698
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Goroutines/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/1Ku-1Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 565302387,
-                    "mem": {
-                        "bytes_per_op": 96034344,
-                        "allocs_per_op": 2001026
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/GoroutinePool/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/1Ku-1Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1286297114,
-                    "mem": {
-                        "bytes_per_op": 27199712,
-                        "allocs_per_op": 467334
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/BufferedPool/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/1Ku-1Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1214802844,
-                    "mem": {
-                        "bytes_per_op": 35219210,
-                        "allocs_per_op": 467302
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Gammazero/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/1Ku-1Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1226587080,
-                    "mem": {
-                        "bytes_per_op": 1553040,
-                        "allocs_per_op": 25703
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/AntsPool/1Ku-1Kt-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/1Ku-1Kt-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 942052862,
-                    "mem": {
-                        "bytes_per_op": 26672685,
-                        "allocs_per_op": 399077
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Eager/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/10Ku-100t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1248812919,
-                    "mem": {
-                        "bytes_per_op": 13429912,
-                        "allocs_per_op": 93192
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Balanced/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/10Ku-100t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1356423820,
-                    "mem": {
-                        "bytes_per_op": 10256248,
-                        "allocs_per_op": 41563
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Lazy/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/10Ku-100t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1746865628,
-                    "mem": {
-                        "bytes_per_op": 9716301,
-                        "allocs_per_op": 33041
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Goroutines/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/10Ku-100t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 500758322,
-                    "mem": {
-                        "bytes_per_op": 96320040,
-                        "allocs_per_op": 2010002
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/GoroutinePool/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/10Ku-100t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1229181137,
-                    "mem": {
-                        "bytes_per_op": 27484224,
-                        "allocs_per_op": 476298
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/BufferedPool/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/10Ku-100t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1226214550,
-                    "mem": {
-                        "bytes_per_op": 35484768,
-                        "allocs_per_op": 476267
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Gammazero/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/10Ku-100t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1282815534,
-                    "mem": {
-                        "bytes_per_op": 1892581,
-                        "allocs_per_op": 35029
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/AntsPool/10Ku-100t-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/10Ku-100t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 965795469,
-                    "mem": {
-                        "bytes_per_op": 13521554,
-                        "allocs_per_op": 214609
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Eager/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Eager/1Mu-1t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 3727648714,
-                    "mem": {
-                        "bytes_per_op": 43333026,
-                        "allocs_per_op": 1054493
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Balanced/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Balanced/1Mu-1t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1165344577,
-                    "mem": {
-                        "bytes_per_op": 42335682,
-                        "allocs_per_op": 1037935
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Pond-Lazy/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Pond-Lazy/1Mu-1t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1384323616,
-                    "mem": {
-                        "bytes_per_op": 41912013,
-                        "allocs_per_op": 1031305
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Goroutines/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Goroutines/1Mu-1t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 552007710,
-                    "mem": {
-                        "bytes_per_op": 128000040,
-                        "allocs_per_op": 3000002
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/GoroutinePool/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "GoroutinePool/1Mu-1t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1290980638,
-                    "mem": {
-                        "bytes_per_op": 59163520,
-                        "allocs_per_op": 1466290
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/BufferedPool/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "BufferedPool/1Mu-1t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1251145436,
-                    "mem": {
-                        "bytes_per_op": 67163456,
-                        "allocs_per_op": 1466253
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/Gammazero/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "Gammazero/1Mu-1t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1593707654,
-                    "mem": {
-                        "bytes_per_op": 88332933,
-                        "allocs_per_op": 1384304
-                    }
-                },
-                {
-                    "name": "BenchmarkAllSleep10ms/AntsPool/1Mu-1t-16",
-                    "runs": 3,
-                    "scenario": "AntsPool/1Mu-1t-16",
-                    "target": "AllSleep10ms",
-                    "ns_per_op": 1227850274,
-                    "mem": {
-                        "bytes_per_op": 88529530,
-                        "allocs_per_op": 1834343
-                    }
-                }
-            ]
+            "Sleep10ms/AntsPool": [
+    {
+        "name": "BenchmarkAllSleep10ms/AntsPool/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "Sleep10ms/AntsPool",
+        "ns_per_op": 860719918,
+        "mem": {
+            "bytes_per_op": 5724016,
+            "allocs_per_op": 89287
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/AntsPool/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "Sleep10ms/AntsPool",
+        "ns_per_op": 831347253,
+        "mem": {
+            "bytes_per_op": 14011562,
+            "allocs_per_op": 218100
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/AntsPool/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "Sleep10ms/AntsPool",
+        "ns_per_op": 942052862,
+        "mem": {
+            "bytes_per_op": 26672685,
+            "allocs_per_op": 399077
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/AntsPool/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "Sleep10ms/AntsPool",
+        "ns_per_op": 965795469,
+        "mem": {
+            "bytes_per_op": 13521554,
+            "allocs_per_op": 214609
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/AntsPool/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "Sleep10ms/AntsPool",
+        "ns_per_op": 1227850274,
+        "mem": {
+            "bytes_per_op": 88529530,
+            "allocs_per_op": 1834343
+        }
+    }
+],
+            "Sleep10ms/BufferedPool": [
+    {
+        "name": "BenchmarkAllSleep10ms/BufferedPool/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "Sleep10ms/BufferedPool",
+        "ns_per_op": 1018759492,
+        "mem": {
+            "bytes_per_op": 41994261,
+            "allocs_per_op": 533461
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/BufferedPool/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "Sleep10ms/BufferedPool",
+        "ns_per_op": 1208956198,
+        "mem": {
+            "bytes_per_op": 35217792,
+            "allocs_per_op": 466375
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/BufferedPool/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "Sleep10ms/BufferedPool",
+        "ns_per_op": 1214802844,
+        "mem": {
+            "bytes_per_op": 35219210,
+            "allocs_per_op": 467302
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/BufferedPool/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "Sleep10ms/BufferedPool",
+        "ns_per_op": 1226214550,
+        "mem": {
+            "bytes_per_op": 35484768,
+            "allocs_per_op": 476267
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/BufferedPool/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "Sleep10ms/BufferedPool",
+        "ns_per_op": 1251145436,
+        "mem": {
+            "bytes_per_op": 67163456,
+            "allocs_per_op": 1466253
+        }
+    }
+],
+            "Sleep10ms/Gammazero": [
+    {
+        "name": "BenchmarkAllSleep10ms/Gammazero/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "Sleep10ms/Gammazero",
+        "ns_per_op": 1271484680,
+        "mem": {
+            "bytes_per_op": 1465978,
+            "allocs_per_op": 23942
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Gammazero/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "Sleep10ms/Gammazero",
+        "ns_per_op": 1187474936,
+        "mem": {
+            "bytes_per_op": 1534346,
+            "allocs_per_op": 25016
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Gammazero/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "Sleep10ms/Gammazero",
+        "ns_per_op": 1226587080,
+        "mem": {
+            "bytes_per_op": 1553040,
+            "allocs_per_op": 25703
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Gammazero/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "Sleep10ms/Gammazero",
+        "ns_per_op": 1282815534,
+        "mem": {
+            "bytes_per_op": 1892581,
+            "allocs_per_op": 35029
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Gammazero/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "Sleep10ms/Gammazero",
+        "ns_per_op": 1593707654,
+        "mem": {
+            "bytes_per_op": 88332933,
+            "allocs_per_op": 1384304
+        }
+    }
+],
+            "Sleep10ms/GoroutinePool": [
+    {
+        "name": "BenchmarkAllSleep10ms/GoroutinePool/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "Sleep10ms/GoroutinePool",
+        "ns_per_op": 1028226648,
+        "mem": {
+            "bytes_per_op": 28114037,
+            "allocs_per_op": 475582
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/GoroutinePool/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "Sleep10ms/GoroutinePool",
+        "ns_per_op": 1211959484,
+        "mem": {
+            "bytes_per_op": 27209898,
+            "allocs_per_op": 466386
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/GoroutinePool/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "Sleep10ms/GoroutinePool",
+        "ns_per_op": 1286297114,
+        "mem": {
+            "bytes_per_op": 27199712,
+            "allocs_per_op": 467334
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/GoroutinePool/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "Sleep10ms/GoroutinePool",
+        "ns_per_op": 1229181137,
+        "mem": {
+            "bytes_per_op": 27484224,
+            "allocs_per_op": 476298
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/GoroutinePool/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "Sleep10ms/GoroutinePool",
+        "ns_per_op": 1290980638,
+        "mem": {
+            "bytes_per_op": 59163520,
+            "allocs_per_op": 1466290
+        }
+    }
+],
+            "Sleep10ms/Goroutines": [
+    {
+        "name": "BenchmarkAllSleep10ms/Goroutines/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "Sleep10ms/Goroutines",
+        "ns_per_op": 516637533,
+        "mem": {
+            "bytes_per_op": 96464477,
+            "allocs_per_op": 2004273
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Goroutines/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "Sleep10ms/Goroutines",
+        "ns_per_op": 627400648,
+        "mem": {
+            "bytes_per_op": 106183261,
+            "allocs_per_op": 2023451
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Goroutines/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "Sleep10ms/Goroutines",
+        "ns_per_op": 565302387,
+        "mem": {
+            "bytes_per_op": 96034344,
+            "allocs_per_op": 2001026
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Goroutines/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "Sleep10ms/Goroutines",
+        "ns_per_op": 500758322,
+        "mem": {
+            "bytes_per_op": 96320040,
+            "allocs_per_op": 2010002
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Goroutines/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "Sleep10ms/Goroutines",
+        "ns_per_op": 552007710,
+        "mem": {
+            "bytes_per_op": 128000040,
+            "allocs_per_op": 3000002
+        }
+    }
+],
+            "Sleep10ms/Pond-Balanced": [
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Balanced/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "Sleep10ms/Pond-Balanced",
+        "ns_per_op": 1253212444,
+        "mem": {
+            "bytes_per_op": 13642413,
+            "allocs_per_op": 85106
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Balanced/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "Sleep10ms/Pond-Balanced",
+        "ns_per_op": 2157206090,
+        "mem": {
+            "bytes_per_op": 9128610,
+            "allocs_per_op": 18667
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Balanced/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "Sleep10ms/Pond-Balanced",
+        "ns_per_op": 1666427707,
+        "mem": {
+            "bytes_per_op": 9505240,
+            "allocs_per_op": 25249
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Balanced/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "Sleep10ms/Pond-Balanced",
+        "ns_per_op": 1356423820,
+        "mem": {
+            "bytes_per_op": 10256248,
+            "allocs_per_op": 41563
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Balanced/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "Sleep10ms/Pond-Balanced",
+        "ns_per_op": 1165344577,
+        "mem": {
+            "bytes_per_op": 42335682,
+            "allocs_per_op": 1037935
+        }
+    }
+],
+            "Sleep10ms/Pond-Eager": [
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Eager/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "Sleep10ms/Pond-Eager",
+        "ns_per_op": 679535295,
+        "mem": {
+            "bytes_per_op": 15276685,
+            "allocs_per_op": 90517
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Eager/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "Sleep10ms/Pond-Eager",
+        "ns_per_op": 750843662,
+        "mem": {
+            "bytes_per_op": 13117464,
+            "allocs_per_op": 83684
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Eager/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "Sleep10ms/Pond-Eager",
+        "ns_per_op": 903500836,
+        "mem": {
+            "bytes_per_op": 13046872,
+            "allocs_per_op": 83177
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Eager/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "Sleep10ms/Pond-Eager",
+        "ns_per_op": 1248812919,
+        "mem": {
+            "bytes_per_op": 13429912,
+            "allocs_per_op": 93192
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Eager/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "Sleep10ms/Pond-Eager",
+        "ns_per_op": 3727648714,
+        "mem": {
+            "bytes_per_op": 43333026,
+            "allocs_per_op": 1054493
+        }
+    }
+],
+            "Sleep10ms/Pond-Lazy": [
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Lazy/1u-1Mt-16",
+        "runs": 3,
+        "scenario": "1u-1Mt-16",
+        "target": "Sleep10ms/Pond-Lazy",
+        "ns_per_op": 1455035252,
+        "mem": {
+            "bytes_per_op": 14426146,
+            "allocs_per_op": 91721
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Lazy/100u-10Kt-16",
+        "runs": 3,
+        "scenario": "100u-10Kt-16",
+        "target": "Sleep10ms/Pond-Lazy",
+        "ns_per_op": 2645551867,
+        "mem": {
+            "bytes_per_op": 8892290,
+            "allocs_per_op": 14845
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Lazy/1Ku-1Kt-16",
+        "runs": 3,
+        "scenario": "1Ku-1Kt-16",
+        "target": "Sleep10ms/Pond-Lazy",
+        "ns_per_op": 2134730987,
+        "mem": {
+            "bytes_per_op": 9162157,
+            "allocs_per_op": 19698
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Lazy/10Ku-100t-16",
+        "runs": 3,
+        "scenario": "10Ku-100t-16",
+        "target": "Sleep10ms/Pond-Lazy",
+        "ns_per_op": 1746865628,
+        "mem": {
+            "bytes_per_op": 9716301,
+            "allocs_per_op": 33041
+        }
+    },
+    {
+        "name": "BenchmarkAllSleep10ms/Pond-Lazy/1Mu-1t-16",
+        "runs": 3,
+        "scenario": "1Mu-1t-16",
+        "target": "Sleep10ms/Pond-Lazy",
+        "ns_per_op": 1384323616,
+        "mem": {
+            "bytes_per_op": 41912013,
+            "allocs_per_op": 1031305
+        }
+    }
+]
         }
     }
 ]

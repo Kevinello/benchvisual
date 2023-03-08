@@ -59,7 +59,6 @@ benchvisual also provides json output format for your secondary development, use
 		jsonMode := cmd.Flag("json").Value.String() == "true"
 
 		var regex *regexp2.Regexp
-		sep = "/"
 		if sep == "" {
 			// only parse regexp when sep is empty
 			regex, err = regexp2.Compile(regexStr, 0)
