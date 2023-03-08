@@ -11,8 +11,8 @@ builds:
       - linux
       - darwin
       # - windows
-    main: ./cmd/benchvisual
-    binary: benchvisual
+    main: ./cmd/go-benchvisual
+    binary: go-benchvisual
 
 archives:
   - format: tar.gz

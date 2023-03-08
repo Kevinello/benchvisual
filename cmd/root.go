@@ -1,4 +1,4 @@
-// Package cmd provide command for benchvisual
+// Package cmd provide command for go-benchvisual
 /*
 Copyright © 2023 Kevinello kevinello42@gmail.com
 
@@ -35,20 +35,20 @@ var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use: "benchvisual [--version] [--help] [-s <separator> | -r <regexp>] [-f <benchmark path>] [-o <output path>] [--json]",
-	Example: `  go test -bench . | benchvisual -r '^Bench(mark)?(?<target>\\S+)/(?<scenario>\\S+)$'
-  benchvisual -s '/' -f "path/to/origin/benchmark/file"`,
+	Use: "go-benchvisual [--version] [--help] [-s <separator> | -r <regexp>] [-f <benchmark path>] [-o <output path>] [--json]",
+	Example: `  go test -bench . | go-benchvisual -r '^Bench(mark)?(?<target>\\S+)/(?<scenario>\\S+)$'
+  go-benchvisual -s '/' -f "path/to/origin/benchmark/file"`,
 	Short: "Parse and visualize Golang standard Benchmark output",
 	Long: `Parse and visualize Golang standard Benchmark output.
-benchvisual provides pipe mode and file mode, it will work in pipe mode in default, add flag -f to let it work in file mode.
-there are two definitions in benchvisual -- "targets" and "scenarios", which the visualization works depends on.
+go-benchvisual provides pipe mode and file mode, it will work in pipe mode in default, add flag -f to let it work in file mode.
+there are two definitions in go-benchvisual -- "targets" and "scenarios", which the visualization works depends on.
 "targets" means targets to generate Benchmark on, and the "scenarios" means specific Benchmark scenarios where the Benchmark run in.
 In the visualization progress, we will visualize Benchmark in a concepts mapping below:
 	- bench.Set(package) -> page(html)
 	- metrics(ns/op...)  -> series of metrics value
 	- targets            -> series name(x axis)
 	- scenarios          -> dummy values in charts(group name)
-benchvisual also provides json output format for your secondary development, use --json to let it output json file.`,
+go-benchvisual also provides json output format for your secondary development, use --json to let it output json file.`,
 	Version: "0.1.0",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		// parse flags
