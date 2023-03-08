@@ -53,3 +53,7 @@ Flags:
 ## TODO
 
 - more custom configs for visualization
+
+## Contribution & Support
+
+Feel free to send a pull request if you consider there's something which can be improved. Also, please open up an issue if you run into a problem when using benchvisual or just have a question.
