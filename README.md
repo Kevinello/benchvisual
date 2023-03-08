@@ -59,6 +59,10 @@ Flags:
 ## TODO
 
 - more custom configs for visualization
+- support [custom Benchmark metrics](https://tip.golang.org/pkg/testing/#B.ReportMetric)
+- more log to show progress
+- provide silent mode(disable log)
+- provide verbose mode(enable debug log)
 
 ## Contribution & Support
 

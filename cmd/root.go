@@ -31,7 +31,15 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var json = jsoniter.ConfigCompatibleWithStandardLibrary
+var (
+	json = jsoniter.ConfigCompatibleWithStandardLibrary
+
+	sep       = new(string)
+	regexStr  = new(string)
+	filePath  = new(string)
+	outputDir = new(string)
+	jsonMode  = new(bool)
+)
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -51,59 +59,52 @@ In the visualization progress, we will visualize Benchmark in a concepts mapping
 benchvisual also provides json output format for your secondary development, use --json to let it output json file.`,
 	Version: "0.1.0",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
-		// parse flags
-		sep := cmd.Flag("sep").Value.String()
-		regexStr := cmd.Flag("regex").Value.String()
-		filePath := cmd.Flag("file").Value.String()
-		outputDir := cmd.Flag("output").Value.String()
-		jsonMode := cmd.Flag("json").Value.String() == "true"
-
 		var regex *regexp2.Regexp
-		if sep == "" {
+		if *sep == "" {
 			// only parse regexp when sep is empty
-			regex, err = regexp2.Compile(regexStr, 0)
+			regex, err = regexp2.Compile(*regexStr, 0)
 			if err != nil {
 				return
 			}
 		}
 		// check if the output path is exist
-		if fileInfo, err := os.Stat(outputDir); os.IsNotExist(err) {
-			return fmt.Errorf("given output directory path not exist: %s", outputDir)
+		if fileInfo, err := os.Stat(*outputDir); os.IsNotExist(err) {
+			return fmt.Errorf("given output directory path not exist: %s", *outputDir)
 		} else if err != nil {
-			return fmt.Errorf("error when stat given output directory path: %s", outputDir)
+			return fmt.Errorf("error when stat given output directory path: %s", *outputDir)
 		} else if !fileInfo.IsDir() {
-			return fmt.Errorf("given path is not a directory: %s", outputDir)
+			return fmt.Errorf("given path is not a directory: %s", *outputDir)
 		}
 
 		var reader *bufio.Reader
-		if filePath != "" {
+		if *filePath != "" {
 			// file mode
-			f, err := os.Open(filePath)
+			f, err := os.Open(*filePath)
 			if err != nil {
 				return err
 			}
 			reader = bufio.NewReader(f)
 		} else {
-			// TODO: pipe mode
+			// pipe mode
 			reader = bufio.NewReader(os.Stdin)
 		}
 
-		sets, err := bench.Parse(reader, sep, regex)
+		sets, err := bench.Parse(reader, *sep, regex)
 		if err != nil {
 			return err
 		}
 		log.Info("Benchmark parsed success", "set num", len(sets))
 
-		if jsonMode {
+		if *jsonMode {
 			// json mode, only export parsed Benchmark in json file
 			setsInBytes, err := json.MarshalIndent(sets, "", "    ")
 			if err != nil {
 				return err
 			}
 			log.Info("marshal parsed Benchmark success", "sets", string(setsInBytes))
-			return ioutil.WriteFile(filepath.Join(outputDir, "parsed_benchmark.json"), setsInBytes, os.ModePerm)
+			return ioutil.WriteFile(filepath.Join(*outputDir, "parsed_benchmark.json"), setsInBytes, os.ModePerm)
 		}
-		savedPath, err := visual.Visualize(outputDir, sets)
+		savedPath, err := visual.Visualize(*outputDir, sets)
 		if err != nil {
 			return err
 		}
@@ -123,11 +124,11 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().StringP("file", "f", "", "use file mode instead of pipe mode, Read the original Benchmark output from the given file path")
-	rootCmd.Flags().StringP("sep", "s", "", "string separator of a Benchmark string's target and scenario.\ne.g., we got a benchmark name string 'BenchmarkFibonacci/100times' with separator '/', then the target of it is 'Fibonacci' and the scenario of it is '100times'.\n")
-	rootCmd.Flags().StringP("regex", "r", "^Bench(mark)?(?<target>[A-Z]+\\S*)(?<scenario>[A-Z]+\\S*)$", "regexp expression with two sub groups(target and scenario), written in '.NET-style capture groups'--(?<name>re) or (?'name're).\ne.g., '^Bench(mark)?(?<target>\\S+/\\S+)/(?<scenario>\\S+)$'")
-	rootCmd.Flags().StringP("output", "o", ".", "directory path to save the output file")
-	rootCmd.Flags().Bool("json", false, "only output parsed Benchmark result in json file")
+	rootCmd.Flags().StringVarP(filePath, "file", "f", "", "use file mode instead of pipe mode, Read the original Benchmark output from the given file path")
+	rootCmd.Flags().StringVarP(sep, "sep", "s", "", "string separator of a Benchmark string's target and scenario.\ne.g., we got a benchmark name string 'BenchmarkFibonacci/100times' with separator '/', then the target of it is 'Fibonacci' and the scenario of it is '100times'.\n")
+	rootCmd.Flags().StringVarP(regexStr, "regex", "r", "^Bench(mark)?(?<target>[A-Z]+\\S*)(?<scenario>[A-Z]+\\S*)$", "regexp expression with two sub groups(target and scenario), written in '.NET-style capture groups'--(?<name>re) or (?'name're).\ne.g., '^Bench(mark)?(?<target>\\S+/\\S+)/(?<scenario>\\S+)$'")
+	rootCmd.Flags().StringVarP(outputDir, "output", "o", ".", "directory path to save the output file")
+	rootCmd.Flags().BoolVar(jsonMode, "json", false, "only output parsed Benchmark result in json file")
 
 	rootCmd.MarkFlagsMutuallyExclusive("sep", "regex")
 }
