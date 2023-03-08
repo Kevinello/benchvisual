@@ -11,7 +11,7 @@ builds:
       - linux
       - darwin
       # - windows
-    main: .
+    main: ./cmd/benchvisual
     binary: benchvisual
 
 archives:

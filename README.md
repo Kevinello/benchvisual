@@ -15,6 +15,12 @@ benchvisual is a tool for visualizing Golang standard Benchmark output, which wi
 - custom output file path
 - json output instead of visualized output for secondary development
 
+## Install
+
+```shell
+go install github.com/Kevinello/go-benchvisual/cmd/benchvisual@latest
+```
+
 ## Usage
 
 ```shell
