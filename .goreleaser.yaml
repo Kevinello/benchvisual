@@ -11,7 +11,7 @@ builds:
       - linux
       - darwin
       # - windows
-    main: ./cmd/go-benchvisual
+    main: .
     binary: go-benchvisual
 
 archives:
