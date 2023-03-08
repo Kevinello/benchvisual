@@ -12,7 +12,7 @@ builds:
       - darwin
       # - windows
     main: .
-    binary: go-benchvisual
+    binary: benchvisual
 
 archives:
   - format: tar.gz

@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Kevinello/go-benchvisual/internal/collections"
+	"github.com/Kevinello/benchvisual/internal/collections"
 	"github.com/dlclark/regexp2"
 )
 

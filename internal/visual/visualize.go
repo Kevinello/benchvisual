@@ -10,8 +10,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/Kevinello/go-benchvisual/internal/bench"
-	"github.com/Kevinello/go-benchvisual/internal/collections"
+	"github.com/Kevinello/benchvisual/internal/bench"
+	"github.com/Kevinello/benchvisual/internal/collections"
 	"github.com/go-echarts/go-echarts/v2/charts"
 	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/go-echarts/go-echarts/v2/opts"

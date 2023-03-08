@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "github.com/Kevinello/go-benchvisual/cmd"
+import "github.com/Kevinello/benchvisual/cmd"
 
 func main() {
 	cmd.Execute()
