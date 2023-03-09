@@ -39,6 +39,8 @@ var (
 	filePath  = new(string)
 	outputDir = new(string)
 	jsonMode  = new(bool)
+	silent    = new(bool)
+	verbose   = new(bool)
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -76,6 +78,12 @@ benchvisual also provides json output format for your secondary development, use
 			return fmt.Errorf("given path is not a directory: %s", *outputDir)
 		}
 
+		if *silent {
+			log.SetLevel(log.FatalLevel)
+		} else if *verbose {
+			log.SetLevel(log.DebugLevel)
+		}
+
 		var reader *bufio.Reader
 		if *filePath != "" {
 			// file mode
@@ -93,7 +101,7 @@ benchvisual also provides json output format for your secondary development, use
 		if err != nil {
 			return err
 		}
-		log.Info("Benchmark parsed success", "set num", len(sets))
+		log.Info("Benchmark parsed success", "set_num", len(sets))
 
 		if *jsonMode {
 			// json mode, only export parsed Benchmark in json file
@@ -101,7 +109,11 @@ benchvisual also provides json output format for your secondary development, use
 			if err != nil {
 				return err
 			}
-			log.Info("marshal parsed Benchmark success", "sets", string(setsInBytes))
+			log.Debug("marshal parsed Benchmark success")
+			if *outputDir == "" {
+				// only print to stdout when output dir not given
+				log.Print("\n" + string(setsInBytes))
+			}
 			return ioutil.WriteFile(filepath.Join(*outputDir, "parsed_benchmark.json"), setsInBytes, os.ModePerm)
 		}
 		savedPath, err := visual.Visualize(*outputDir, sets)
@@ -129,6 +141,9 @@ func init() {
 	rootCmd.Flags().StringVarP(regexStr, "regex", "r", "^Bench(mark)?(?<target>[A-Z]+\\S*)(?<scenario>[A-Z]+\\S*)$", "regexp expression with two sub groups(target and scenario), written in '.NET-style capture groups'--(?<name>re) or (?'name're).\ne.g., '^Bench(mark)?(?<target>\\S+/\\S+)/(?<scenario>\\S+)$'")
 	rootCmd.Flags().StringVarP(outputDir, "output", "o", ".", "directory path to save the output file")
 	rootCmd.Flags().BoolVar(jsonMode, "json", false, "only output parsed Benchmark result in json file")
+	rootCmd.Flags().BoolVar(silent, "silent", false, "disable log(only show fatal log)")
+	rootCmd.Flags().BoolVar(verbose, "verbose", false, "enable debug log")
 
 	rootCmd.MarkFlagsMutuallyExclusive("sep", "regex")
+	rootCmd.MarkFlagsMutuallyExclusive("silent", "verbose")
 }
