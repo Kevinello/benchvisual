@@ -23,10 +23,11 @@ go install github.com/Kevinello/benchvisual@latest
 
 ### ⚠️ Retracted versions
 
-Versions released **erroneously**, Please do not install these versions([reason](https://stackoverflow.com/questions/68599703/how-do-i-delete-a-package-that-i-accidentally-published-to-go-dev/68599844#68599844))
+Versions released **erroneously**, Please do not install these versions([retracted versions](https://go.dev/ref/mod#go-mod-file-retract))
 
 - v0.1.0
 - v0.1.1
+- v0.1.2
 
 ## Usage
 

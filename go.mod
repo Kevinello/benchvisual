@@ -3,8 +3,7 @@ module github.com/Kevinello/benchvisual
 go 1.20
 
 retract (
-    v0.1.0
-    v0.1.1
+	[v0.1.0, v0.1.2] // erroneously released versions
 )
 
 require (
@@ -18,8 +17,8 @@ require (
 )
 
 require (
-	github.com/aymanbagabas/go-osc52 v1.2.1 // indirect
-	github.com/charmbracelet/lipgloss v0.6.0 // indirect
+	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
+	github.com/charmbracelet/lipgloss v0.7.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
@@ -31,7 +30,7 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
-	github.com/muesli/termenv v0.14.0 // indirect
+	github.com/muesli/termenv v0.15.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/smartystreets/assertions v1.13.0 // indirect

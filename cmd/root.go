@@ -57,7 +57,7 @@ In the visualization progress, we will visualize Benchmark in a concepts mapping
 	- targets            -> series name(x axis)
 	- scenarios          -> dummy values in charts(group name)
 benchvisual also provides json output format for your secondary development, use --json to let it output json file.`,
-	Version: "0.1.1",
+	Version: "0.1.3",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		var regex *regexp2.Regexp
 		if *sep == "" {
