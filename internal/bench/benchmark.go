@@ -6,10 +6,12 @@ package bench
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"strconv"
 	"strings"
 
 	"github.com/Kevinello/benchvisual/internal/collections"
+	"github.com/charmbracelet/log"
 	"github.com/dlclark/regexp2"
 )
 
@@ -32,8 +34,8 @@ type Benchmark struct {
 
 	// For a Benchmark function BenchXXX10000, its target is XXX, and its Scenario is 10000
 	// The Benchmark of different target is compared in each Scenario
-	Scenario string `json:"scenario,omitempty"`
 	Target   string `json:"target,omitempty"`
+	Scenario string `json:"scenario,omitempty"`
 
 	NsPerOp       float64            `json:"ns_per_op,omitempty"`
 	Mem           Mem                `json:"mem,omitempty"`            // metrics from '-benchmem'
@@ -81,27 +83,37 @@ func ParseSet(reader *bufio.Reader, sep string, regex *regexp2.Regexp) (set *Set
 
 	for {
 		l, _, err := reader.ReadLine()
-		if err != nil {
+		if err == io.EOF {
+			err = fmt.Errorf("found EOF before 'PASS' or 'FAIL'(the end of a Benchmark set)")
+			return nil, err
+		} else if err != nil {
 			return nil, err
 		}
 		line := string(l)
 
 		if strings.HasPrefix(line, "PASS") || strings.HasPrefix(line, "FAIL") {
 			// end of one set
+			log.Info("Benchmark set parsed")
 			break
 		} else if os, found := strings.CutPrefix(line, "goos: "); found {
 			set.Goos = os
+			log.Info("Benchmark metadata", "goos", set.Goos)
 		} else if arch, found := strings.CutPrefix(line, "goarch: "); found {
 			set.Goarch = arch
+			log.Info("Benchmark metadata", "goarch", set.Goarch)
 		} else if pkg, found := strings.CutPrefix(line, "pkg: "); found {
 			set.Pkg = pkg
+			log.Info("Benchmark metadata", "pkg", set.Pkg)
 		} else if cpu, found := strings.CutPrefix(line, "cpu: "); found {
 			set.CPU = cpu
+			log.Info("Benchmark metadata", "cpu", set.CPU)
 		} else if strings.HasPrefix(line, "Bench") {
+			log.Debug("[ParseSet] Benchmark line", "origin_line", line)
 			bench, err := ParseBench(line, sep, regex)
 			if err != nil {
 				return nil, fmt.Errorf("%w: %q", err, line)
 			}
+			log.Debug("Benchmark parsed", "name", bench.Name, "runs", bench.Runs, "target", bench.Target, "scenario", bench.Scenario)
 			if benchmarks, ok := set.Targets[bench.Target]; ok {
 				set.Targets[bench.Target] = append(benchmarks, *bench)
 			} else {
@@ -113,13 +125,13 @@ func ParseSet(reader *bufio.Reader, sep string, regex *regexp2.Regexp) (set *Set
 	return
 }
 
-// GetScenario get all unique scenario in a Benchmark set
+// GetScenarios get all unique scenario in a Benchmark set
 //
 //	@receiver set *Set
 //	@return scenarios []string
 //	@author kevineluo
 //	@update 2023-03-07 04:33:12
-func (set *Set) GetScenario() (scenarios []string) {
+func (set *Set) GetScenarios() (scenarios []string) {
 	scenarioSet := collections.NewSet[string](0)
 	for _, benchmarks := range set.Targets {
 		// collect unique scenario
@@ -149,6 +161,7 @@ func ParseBench(line string, sep string, regex *regexp2.Regexp) (bench *Benchmar
 
 	if regex != nil {
 		// with regexp
+		log.Debug("[ParseBench] in regex mode", "regexp", regex.String())
 		match, err := regex.FindStringMatch(bench.Name)
 		if err != nil {
 			return nil, fmt.Errorf("[ParseBench] error when parse [benchmark name: %s], [regexp: %s], error: %w", bench.Name, regex.String(), err)
@@ -165,6 +178,7 @@ func ParseBench(line string, sep string, regex *regexp2.Regexp) (bench *Benchmar
 		}
 	} else if sep != "" {
 		// with separator
+		log.Debug("[ParseBench] in separator mode", "separator", sep)
 		var after string
 		var found bool
 		// Compatible for "Benchmark" and "Bench"

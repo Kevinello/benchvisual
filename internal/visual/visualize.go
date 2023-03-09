@@ -85,7 +85,7 @@ var (
 func Visualize(saveDir string, sets []bench.Set) (savedPaths []string, err error) {
 	for _, set := range sets {
 		// get all scenarios
-		scenarios := set.GetScenario()
+		scenarios := set.GetScenarios()
 		// ns/op
 		timePerOPChart := charts.NewBar()
 		setupBarChart(timePerOPChart, &set, "Time cost per option(ns)", scenarios)

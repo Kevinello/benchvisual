@@ -1,4 +1,5 @@
 .vscode/*
 bin
 tests/*.html
+tests/*.json
 dist/
