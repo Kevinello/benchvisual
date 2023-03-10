@@ -45,7 +45,7 @@ In the visualization progress, we will visualize Benchmark in a concepts mapping
 benchvisual also provides json output format for your secondary development, use --json to let it output json file.
 
 Usage:
-  benchvisual [--version] [--help] [-s <separator> | -r <regexp>] [-f <benchmark path>] [-o <output path>] [--json] [flags]
+  benchvisual [--version] [--help] [-s <separator> | -r <regexp>] [-f <benchmark path>] [-o <output path>] [--json] [--verbose] [--silent] [<args>]
 
 Examples:
   go test -bench . | benchvisual -r '^Bench(mark)?(?<target>\\S+)/(?<scenario>\\S+)$'
@@ -61,6 +61,8 @@ Flags:
   -s, --sep string      string separator of a Benchmark string's target and scenario.
                         e.g., we got a benchmark name string 'BenchmarkFibonacci/100times' with separator '/', then the target of it is 'Fibonacci' and the scenario of it is '100times'.
                         
+      --silent          disable log(only show fatal log)
+      --verbose         enable debug log
   -v, --version         version for benchvisual
 ```
 

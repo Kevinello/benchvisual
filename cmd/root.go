@@ -45,7 +45,7 @@ var (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use: "benchvisual [--version] [--help] [-s <separator> | -r <regexp>] [-f <benchmark path>] [-o <output path>] [--json]",
+	Use: "benchvisual [--version] [--help] [-s <separator> | -r <regexp>] [-f <benchmark path>] [-o <output path>] [--json] [--verbose] [--silent]",
 	Example: `  go test -bench . | benchvisual -r '^Bench(mark)?(?<target>\\S+)/(?<scenario>\\S+)$'
   benchvisual -s '/' -f "path/to/origin/benchmark/file"`,
 	Short: "Parse and visualize Golang standard Benchmark output",
@@ -59,7 +59,7 @@ In the visualization progress, we will visualize Benchmark in a concepts mapping
 	- targets            -> series name(x axis)
 	- scenarios          -> dummy values in charts(group name)
 benchvisual also provides json output format for your secondary development, use --json to let it output json file.`,
-	Version: "0.1.3",
+	Version: "0.1.4",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		var regex *regexp2.Regexp
 		if *sep == "" {
