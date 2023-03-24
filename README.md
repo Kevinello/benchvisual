@@ -66,6 +66,10 @@ Flags:
   -v, --version         version for benchvisual
 ```
 
+## Project Structure
+
+![Project Structure](./images/project-structure.svg)
+
 ## TODO
 
 - more custom configs for visualization

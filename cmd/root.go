@@ -113,8 +113,9 @@ benchvisual also provides json output format for your secondary development, use
 			if *outputDir == "" {
 				// only print to stdout when output dir not given
 				log.Print("\n" + string(setsInBytes))
+			} else {
+				return ioutil.WriteFile(filepath.Join(*outputDir, "parsed_benchmark.json"), setsInBytes, os.ModePerm)
 			}
-			return ioutil.WriteFile(filepath.Join(*outputDir, "parsed_benchmark.json"), setsInBytes, os.ModePerm)
 		}
 		savedPath, err := visual.Visualize(*outputDir, sets)
 		if err != nil {
