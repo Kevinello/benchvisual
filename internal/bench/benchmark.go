@@ -29,8 +29,9 @@ type Set struct {
 // evaluate divisions so that results come out as floats instead of being truncated to
 // integers.
 type Benchmark struct {
-	Name string `json:"name,omitempty"`
-	Runs int    `json:"runs,omitempty"` // benchmark times
+	Name     string `json:"name,omitempty"`
+	CPUCores int    `json:"cpu_cores,omitempty"`
+	Runs     int    `json:"runs,omitempty"` // benchmark times
 
 	// For a Benchmark function BenchXXX10000, its target is XXX, and its Scenario is 10000
 	// The Benchmark of different target is compared in each Scenario
@@ -160,6 +161,17 @@ func ParseBench(line string, sep string, regex *regexp2.Regexp) (bench *Benchmar
 		return strings.TrimSpace(s)
 	})
 	bench.Name, split = popLeft(split)
+
+	// parse cpu core nums
+	sepIdx := strings.LastIndex(bench.Name, "-")
+	if sepIdx == -1 {
+		return nil, fmt.Errorf("[ParseBench] invalid benchmark name, no '-' found")
+	}
+	bench.CPUCores, err = strconv.Atoi(bench.Name[sepIdx+1:])
+	if err != nil {
+		return nil, fmt.Errorf("[ParseBench] invalid benchmark name, failed to parse cpu core nums")
+	}
+	bench.Name = bench.Name[:sepIdx]
 
 	if regex != nil {
 		// with regexp

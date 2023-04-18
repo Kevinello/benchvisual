@@ -61,7 +61,7 @@ In the visualization progress, we will visualize Benchmark in a concepts mapping
 	- scenarios          -> dummy values in charts(group name)
 benchvisual also provides json output format for your secondary development, use --json to let it output json file.
 benchvisual also provides baseline feature, use --baseline to let it calculate baseline for each Benchmark.`,
-	Version: "0.2.0",
+	Version: "0.2.1",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		var regex *regexp2.Regexp
 		if *sep == "" {

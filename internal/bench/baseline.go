@@ -17,7 +17,8 @@ func Baseline(sets []Set, baselines []float64) {
 					less  bool
 				)
 				if baselines[0] > 0 {
-					fast = benchmark.NsPerOp < baselines[0]
+					// consider cpu core nums when compare
+					fast = benchmark.NsPerOp*float64(benchmark.CPUCores) < baselines[0]
 				}
 				if baselines[1] > 0 {
 					small = benchmark.Mem.BytesPerOp < baselines[1]
