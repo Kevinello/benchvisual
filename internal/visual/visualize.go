@@ -17,54 +17,53 @@ import (
 	"github.com/go-echarts/go-echarts/v2/opts"
 )
 
-var (
-	options = []charts.GlobalOpts{
-		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
-		charts.WithLegendOpts(opts.Legend{
-			Show:   true,
-			Type:   "scroll",
-			Orient: "vertical",
-			Top:    "10%",
-			Right:  "0%",
-			// Padding: 5,
-		}),
-		charts.WithXAxisOpts(opts.XAxis{
-			Name: "Benchmark\nTarget",
-			SplitLine: &opts.SplitLine{
-				Show: true,
+var options = []charts.GlobalOpts{
+	charts.WithTooltipOpts(opts.Tooltip{Show: true}),
+	charts.WithLegendOpts(opts.Legend{
+		Show:   true,
+		Type:   "scroll",
+		Orient: "vertical",
+		Top:    "10%",
+		Right:  "0%",
+		// Padding: 5,
+	}),
+	charts.WithXAxisOpts(opts.XAxis{
+		Name: "Benchmark\nTarget",
+		SplitLine: &opts.SplitLine{
+			Show: true,
+		},
+	}),
+	charts.WithInitializationOpts(opts.Initialization{
+		Width:  "1200px",
+		Height: "600px",
+	}),
+	charts.WithDataZoomOpts(opts.DataZoom{
+		Type:  "inside",
+		Start: 0,
+		End:   100,
+	}),
+	charts.WithToolboxOpts(opts.Toolbox{
+		Show:  true,
+		Right: "5%",
+		Feature: &opts.ToolBoxFeature{
+			SaveAsImage: &opts.ToolBoxFeatureSaveAsImage{
+				Show:  true,
+				Type:  "png",
+				Title: "Save as png",
 			},
-		}),
-		charts.WithInitializationOpts(opts.Initialization{
-			Width:  "1200px",
-			Height: "600px",
-		}),
-		charts.WithDataZoomOpts(opts.DataZoom{
-			Type:  "inside",
-			Start: 0,
-			End:   100,
-		}),
-		charts.WithToolboxOpts(opts.Toolbox{
-			Show:  true,
-			Right: "5%",
-			Feature: &opts.ToolBoxFeature{
-				SaveAsImage: &opts.ToolBoxFeatureSaveAsImage{
-					Show:  true,
-					Type:  "png",
-					Title: "Save as png",
-				},
-				DataView: &opts.ToolBoxFeatureDataView{
-					Show:  true,
-					Title: "DataView",
-					Lang:  []string{"data view", "turn off", "refresh"},
-				},
-				Restore: &opts.ToolBoxFeatureRestore{
-					Show:  true,
-					Title: "Restore view",
-				},
-			}},
-		),
-	}
-)
+			DataView: &opts.ToolBoxFeatureDataView{
+				Show:  true,
+				Title: "DataView",
+				Lang:  []string{"data view", "turn off", "refresh"},
+			},
+			Restore: &opts.ToolBoxFeatureRestore{
+				Show:  true,
+				Title: "Restore view",
+			},
+		},
+	},
+	),
+}
 
 // Visualize visualize benchmark sets and save html to target path
 // every set will be visualize as 3+ bar charts for 3+ metrics(include custom metrics),
