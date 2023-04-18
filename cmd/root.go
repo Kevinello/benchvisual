@@ -41,11 +41,12 @@ var (
 	jsonMode  = new(bool)
 	silent    = new(bool)
 	verbose   = new(bool)
+	baselines = make([]float64, 0)
 )
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use: "benchvisual [--version] [--help] [-s <separator> | -r <regexp>] [-f <benchmark path>] [-o <output path>] [--json] [--verbose] [--silent]",
+	Use: "benchvisual [--version] [--help] [-s <separator> | -r <regexp>] [-f <benchmark path>] [-o <output path>] [--json] [--verbose / --silent] [--baseline <baseline>...]",
 	Example: `  go test -bench . | benchvisual -r '^Bench(mark)?(?<target>\\S+)/(?<scenario>\\S+)$'
   benchvisual -s '/' -f "path/to/origin/benchmark/file"`,
 	Short: "Parse and visualize Golang standard Benchmark output",
@@ -58,8 +59,9 @@ In the visualization progress, we will visualize Benchmark in a concepts mapping
 	- metrics(ns/op...)  -> series of metrics value
 	- targets            -> series name(x axis)
 	- scenarios          -> dummy values in charts(group name)
-benchvisual also provides json output format for your secondary development, use --json to let it output json file.`,
-	Version: "0.1.4",
+benchvisual also provides json output format for your secondary development, use --json to let it output json file.
+benchvisual also provides baseline feature, use --baseline to let it calculate baseline for each Benchmark.`,
+	Version: "0.2.0",
 	RunE: func(cmd *cobra.Command, args []string) (err error) {
 		var regex *regexp2.Regexp
 		if *sep == "" {
@@ -103,6 +105,14 @@ benchvisual also provides json output format for your secondary development, use
 		}
 		log.Info("Benchmark parsed success", "set_num", len(sets))
 
+		if len(baselines) > 0 {
+			if len(baselines) != 3 {
+				return fmt.Errorf("baseline should be a 3 elements array, got %v", baselines)
+			}
+			bench.Baseline(sets, baselines)
+			log.Info("Benchmark baseline success")
+		}
+
 		if *jsonMode {
 			// json mode, only export parsed Benchmark in json file
 			setsInBytes, err := json.MarshalIndent(sets, "", "    ")
@@ -110,20 +120,25 @@ benchvisual also provides json output format for your secondary development, use
 				return err
 			}
 			log.Debug("marshal parsed Benchmark success")
-			if *outputDir == "" {
-				// only print to stdout when output dir not given
-				log.Print("\n" + string(setsInBytes))
-			} else {
-				return ioutil.WriteFile(filepath.Join(*outputDir, "parsed_benchmark.json"), setsInBytes, os.ModePerm)
+
+			outputPath := filepath.Join(*outputDir, "parsed_benchmark.json")
+			err = ioutil.WriteFile(outputPath, setsInBytes, os.ModePerm)
+			if err != nil {
+				return err
 			}
+			log.Info("parsed Benchmark json exported success", "saved path", outputPath)
+			return nil
 		}
 		savedPath, err := visual.Visualize(*outputDir, sets)
 		if err != nil {
 			return err
 		}
 		log.Info("Benchmark visualized success", "saved paths", savedPath)
+
 		return nil
 	},
+	SilenceUsage:  true,
+	SilenceErrors: true,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -137,13 +152,15 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().StringVarP(filePath, "file", "f", "", "use file mode instead of pipe mode, Read the original Benchmark output from the given file path")
+	rootCmd.PersistentFlags().StringVarP(filePath, "file", "f", "", "use file mode instead of pipe mode, Read the original Benchmark output from the given file path")
+	rootCmd.PersistentFlags().BoolVar(silent, "silent", false, "disable log(only show fatal log)")
+	rootCmd.PersistentFlags().BoolVar(verbose, "verbose", false, "enable debug log")
+
 	rootCmd.Flags().StringVarP(sep, "sep", "s", "", "string separator of a Benchmark string's target and scenario.\ne.g., we got a benchmark name string 'BenchmarkFibonacci/100times' with separator '/', then the target of it is 'Fibonacci' and the scenario of it is '100times'.\n")
 	rootCmd.Flags().StringVarP(regexStr, "regex", "r", "^Bench(mark)?(?<target>[A-Z]+\\S*)(?<scenario>[A-Z]+\\S*)$", "regexp expression with two sub groups(target and scenario), written in '.NET-style capture groups'--(?<name>re) or (?'name're).\ne.g., '^Bench(mark)?(?<target>\\S+/\\S+)/(?<scenario>\\S+)$'")
 	rootCmd.Flags().StringVarP(outputDir, "output", "o", ".", "directory path to save the output file")
 	rootCmd.Flags().BoolVar(jsonMode, "json", false, "only output parsed Benchmark result in json file")
-	rootCmd.Flags().BoolVar(silent, "silent", false, "disable log(only show fatal log)")
-	rootCmd.Flags().BoolVar(verbose, "verbose", false, "enable debug log")
+	rootCmd.Flags().Float64SliceVarP(&baselines, "baseline", "b", []float64{}, "baseline metrics to check, it must be a 3 elements array, which represents the baseline metrics of ns/op, B/op and allocs/op, e.g., [100, 1000, 10](set metric to <= 0 to disable baseline check for specific metric).)")
 
 	rootCmd.MarkFlagsMutuallyExclusive("sep", "regex")
 	rootCmd.MarkFlagsMutuallyExclusive("silent", "verbose")

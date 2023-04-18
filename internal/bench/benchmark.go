@@ -40,6 +40,8 @@ type Benchmark struct {
 	NsPerOp       float64            `json:"ns_per_op,omitempty"`
 	Mem           Mem                `json:"mem,omitempty"`            // metrics from '-benchmem'
 	CustomMetrics map[string]float64 `json:"custom_metrics,omitempty"` // custom metrics(https://tip.golang.org/pkg/testing/#B.ReportMetric)
+
+	ReachBaseline bool `json:"reach_baseline"` // whether this benchmark reach baseline
 }
 
 // BenchmarkList implement sort.Interface
@@ -166,6 +168,9 @@ func ParseBench(line string, sep string, regex *regexp2.Regexp) (bench *Benchmar
 		if err != nil {
 			return nil, fmt.Errorf("[ParseBench] error when parse [benchmark name: %s], [regexp: %s], error: %w", bench.Name, regex.String(), err)
 		}
+		if match == nil {
+			return nil, fmt.Errorf("[ParseBench] no match found in [benchmark name: %s], [regexp: %s]", bench.Name, regex.String())
+		}
 		if group := match.GroupByName("target"); group != nil {
 			bench.Target = group.String()
 		} else {
@@ -209,7 +214,7 @@ func ParseBench(line string, sep string, regex *regexp2.Regexp) (bench *Benchmar
 			return nil, fmt.Errorf("[ParseBench] expected two parts in value '%s', got %d", tmp, len(valueAndUnits))
 		}
 
-		var value, units = valueAndUnits[0], valueAndUnits[1]
+		value, units := valueAndUnits[0], valueAndUnits[1]
 		switch units {
 		case "ns/op":
 			bench.NsPerOp, err = strconv.ParseFloat(value, 64)

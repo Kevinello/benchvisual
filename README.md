@@ -14,6 +14,7 @@ benchvisual is a tool for visualizing Golang standard Benchmark output, which wi
 - custom regexp / separator for Benchmark name to recognize "target" and "scenario"
 - custom output file path
 - json output instead of visualized output for secondary development
+- baseline mode for comparing with baseline Benchmark result
 
 ## Install
 
@@ -68,7 +69,7 @@ Flags:
 
 ## Project Structure
 
-![Project Structure](./images/project-structure.svg)
+![Project Structure](https://raw.githubusercontent.com/Kevinello/benchvisual/diagram/images/project-structure.svg)
 
 ## TODO
 
